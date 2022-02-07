@@ -1,1 +1,1 @@
-# JavaScriptGame
+# Hang Man Inspired Game 
