@@ -129,9 +129,15 @@ function checkLives(){
     }
   }
 
-  if (nbOfLives == 0) {
+  if (nbOfLives <= 0) {
     document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
-    btnREPLAY.style.visibility = "visible";   
+    btnREPLAY.style.visibility = "visible";
+    
+    let lettersDisplayed = document.getElementById("letters").querySelectorAll("li");
+    for (let i = 0; i < alphabet.length; i++){
+      lettersDisplayed[i].removeEventListener("click", checkLetter)
+  }
+    
   }
   if (nbOfLives != 0 && winCondition){
     document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
