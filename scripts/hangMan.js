@@ -19,11 +19,12 @@ function playGame() {
   // NB of lives - GOES IN SWETUP
   let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " left";
 
+  //Figure to Display Box
   let displayBox = document.getElementById("imgBox");
   displayBox.style.display="block";
 
-  //Word to Guess
-  let wordBox = document.getElementById("boxes")
+  //Blank Spaces
+  let wordBox = document.getElementById("blanks")
   wordBox.style.padding = "50px";
   for (let i = 0; i<10; i++) {
     let li=document.createElement("li");
@@ -67,6 +68,11 @@ function playGame() {
 
   randomWordGenerator();
   hintGenerator();
+
+  /*Added Event listener on each letter
+  for (let i = 0; i < alphabet.length; i++ ) {
+    document.querySelectorAll("#letters li")[i].addEventListener("click", missOrMatch)
+  } */
 
   let lettersDisplayed = ul.querySelectorAll("li");
   for (let i = 0; i < alphabet.length; i++){
@@ -142,9 +148,6 @@ function displayHint(){
   document.getElementById("hintText").innerHTML += hint;
   document.getElementById("hintBtn").disabled = true;
 }
-/* Glen's Section End*/
-
-
 
 // play again + won/lost - some code is commented as i was not sure of 
 // the elements names we will use
