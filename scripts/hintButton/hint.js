@@ -5,14 +5,18 @@
  * 
  * /
  
-
 /**
  * Test words & their category
  *        Words 1-5: Category 1,
  *        Words 6-10: Category 2 
  *        Words 11-15: Category 3
  */
-var theWord= [
+
+
+// ADD THIS LINE OF CODE TO REMOVE HIDDEN ATTRIBUTE
+    //  document.getElementById("container").removeAttribute("hidden");
+
+ var theWord= [
     'dog',
     'hipopotomus',
     'cow',
