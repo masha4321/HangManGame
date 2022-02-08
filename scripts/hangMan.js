@@ -33,7 +33,6 @@ function playGame() {
     wordBox.append(li);
   }
 
-
   //Alphabet
   let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   let ul = document.getElementById("letters");
@@ -44,61 +43,18 @@ function playGame() {
     li.appendChild(document.createTextNode(letter));
     ul.appendChild(li);
   }
-  //End of Alphabet
-
-  function checkLetter(){
-    let chosenLetter = this.innerHTML;
-    let wordHolder = wordBox.querySelectorAll("li");
-    gameScore = document.getElementById("livesText");
-    let letterFound = false;
-
-    for( i = 0; i < wordChosen.length; i++ ){
-      if( chosenLetter == wordChosen[i] ){
-        wordHolder[i].innerHTML = chosenLetter;
-        letterFound = true;
-      }
-    }
-
-    if(!letterFound){
-      nbOfLives--;
-    }
-    gameScore.innerHTML = "You have " + nbOfLives + " left";
-    checkLives();
-  }
 
   randomWordGenerator();
   hintGenerator();
 
-  /*Added Event listener on each letter
-  for (let i = 0; i < alphabet.length; i++ ) {
-    document.querySelectorAll("#letters li")[i].addEventListener("click", missOrMatch)
-  } */
-
+  //Adds an event listener on each letter of the alphabet
   let lettersDisplayed = ul.querySelectorAll("li");
   for (let i = 0; i < alphabet.length; i++){
     lettersDisplayed[i].addEventListener("click", checkLetter);
   }
+
+  //Adds event listen on hint button
   document.getElementById("hintBtn").addEventListener("click",displayHint);
-}
-
-/*Glen's Section Start */
-function checkLives(){
-  let winCondition = true;
-
-  for( i = 0; i < wordChosen.length; i++ ){
-    if( document.getElementById("boxes").querySelectorAll("li")[i].innerHTML != wordChosen[i]){
-      winCondition = false
-    }
-  }
-
-  if (nbOfLives == 0) {
-    document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
-    btnREPLAY.style.visibility = "visible";   
-  }
-  if (nbOfLives != 0 && winCondition){
-    document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
-    btnREPLAY.style.visibility = "visible";
-  }
 }
 
 function randomWordGenerator() {
@@ -142,6 +98,45 @@ function hintGenerator() {
       break;
   }
   
+}
+
+function checkLetter(){
+  let chosenLetter = this.innerHTML;
+  let wordHolder = document.getElementById("blanks").querySelectorAll("li");
+  gameScore = document.getElementById("livesText");
+  let letterFound = false;
+
+  for( i = 0; i < wordChosen.length; i++ ){
+    if(chosenLetter == wordChosen[i] ){
+      wordHolder[i].innerHTML = chosenLetter;
+      letterFound = true;
+    }
+  }
+
+  if(!letterFound){
+    nbOfLives--;
+  }
+  gameScore.innerHTML = "You have " + nbOfLives + " left";
+  checkLives();
+}
+
+function checkLives(){
+  let winCondition = true;
+
+  for( i = 0; i < wordChosen.length; i++ ){
+    if( document.getElementById("boxes").querySelectorAll("li")[i].innerHTML != wordChosen[i]){
+      winCondition = false
+    }
+  }
+
+  if (nbOfLives == 0) {
+    document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
+    btnREPLAY.style.visibility = "visible";   
+  }
+  if (nbOfLives != 0 && winCondition){
+    document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
+    btnREPLAY.style.visibility = "visible";
+  }
 }
 
 function displayHint(){
