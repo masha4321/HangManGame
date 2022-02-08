@@ -2,6 +2,7 @@
 $(document).ready(function () {
   $(".playBtn").click(function () {
     $(".center").fadeOut();
+    $(".hintBox").removeAttr("hidden");
     playGame();
   });
 });
