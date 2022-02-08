@@ -44,7 +44,7 @@
 }
 
 /*Word to Guess*/
-.emptyBox, .hintBox {
+.emptyBox, .hintBox, #livesText {
   text-align: center;
 }
 
@@ -72,7 +72,7 @@ li {
 /*End of Alphabet*/
 
 /*Hint Button*/
-#hintBtn {
+#hintBtn,#btnReplay, #livesText {
   background-color: #2ee59d;
   color: rgb(0, 0, 0);
   font-size: 25px;
