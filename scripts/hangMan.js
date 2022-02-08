@@ -9,6 +9,9 @@ $(document).ready(function () {
 
 function playGame() {
 
+let displayBox = document.getElementById("imgBox");
+displayBox.style.display="block";
+
 //Word to Guess
 let wordBox = document.getElementById("boxes")
 wordBox.style.padding = "50px";

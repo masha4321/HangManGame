@@ -33,6 +33,16 @@
 }
 /*End of Play Btn*/
 
+/*Hanged Man Display*/
+#imgBox {
+  min-height: 500px;
+  width: 500px;
+  margin: 50px auto;
+  background-color: papayawhip;
+  border: 2px solid black;
+  display: none;
+}
+
 /*Word to Guess*/
 .emptyBox {
   text-align: center;
