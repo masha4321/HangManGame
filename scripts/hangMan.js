@@ -124,7 +124,7 @@ function checkLives(){
   let winCondition = true;
 
   for( i = 0; i < wordChosen.length; i++ ){
-    if( document.getElementById("boxes").querySelectorAll("li")[i].innerHTML != wordChosen[i]){
+    if( document.getElementById("blanks").querySelectorAll("li")[i].innerHTML != wordChosen[i]){
       winCondition = false
     }
   }
