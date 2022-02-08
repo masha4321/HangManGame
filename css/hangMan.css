@@ -39,8 +39,12 @@
   width: 500px;
   margin: 50px auto;
   background-color: papayawhip;
-  border: 2px solid black;
+  border: 2px solid #000000;
   display: none;
+}
+
+#myCanvas {
+  margin: 70px auto;
 }
 
 /*Word to Guess*/
