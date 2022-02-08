@@ -1,3 +1,7 @@
+let randomNumber = 0;
+let wordChosen = "";
+let hint = "";
+
 //Play Btn
 $(document).ready(function () {
   $(".playBtn").click(function () {
@@ -16,7 +20,7 @@ displayBox.style.display="block";
 //Word to Guess
 let wordBox = document.getElementById("boxes")
 wordBox.style.padding = "50px";
-for (let i = 0; i<7; i++) {
+for (let i = 0; i<10; i++) {
   let li=document.createElement("li");
   li.style.backgroundColor="grey";
   li.appendChild(document.createTextNode("_"));
@@ -35,43 +39,63 @@ for (let i = 0; i < alphabet.length; i++) {
   ul.appendChild(li);
 }
 //End of Alphabet
+
+randomWordGenerator();
+hintGenerator();
+document.getElementById("hintBtn").addEventListener("click",displayHint);
+
 }
 
-// Glen's Section Start
-let generatedWord; 
+/*Glen's Section Start */
 
-function hintCategory(){
+function randomWordGenerator() {
+  let wordDatabase = ["automation", "Strawberry", "Friendship", "Everything", "Appreciate", "Ubiquitous", "Motivation", "Vaccinated", "Obediently", "Earthbound"]
+  randomNumber = Math.floor(Math.random() * 10) + 1;
+  wordChosen = wordDatabase[randomNumber-1]
+  console.log(wordChosen)
+}
 
-  // generatedWord = theWord[Math.floor((Math.random() * theWord.length) )];
-  generatedWord = Math.floor((Math.random() * 9) )
-
-  switch( generatedWord ){
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-          displayHint("Insert Hint #1 Here");
-          break;
-      case 5:
-      case 6:
-      case 7:
-      case 8:
-      case 9:
-          displayHint("Insert Hint #2 Here");
-          break;
+function hintGenerator() {
+  switch(randomNumber) {
+    case 1:
+      hint = "Mechanical Process"
+      break;
+    case 2:
+      hint = "Fruit";
+      break;
+    case 3: 
+      hint= "Relationship Status"
+      break;
+    case 4:
+      hint = "Ubiquitous"
+      break;
+    case 5: 
+      hint= "When you value something"
+      break;
+    case 6: 
+      hint = "Everywhere"
+      break;
+    case 7: 
+      hint = "The only way to get out of bed in the morning"
+      break;
+    case 8: 
+      hint = "Major global contempary issue"
+      break;
+    case 9: 
+      hint = "Without protesting";
+      break;
+    case 10:
+      hint = "From the moon to the earth"
+      break;
   }
+  
+}
+/* Glen's Section End*/
+
+function displayHint(){
+  document.getElementById("hintText").innerHTML += hint;
   document.getElementById("hintBtn").disabled = true;
 }
-
-function displayHint(clue){
-  document.getElementById("hintText").innerHTML += clue; 
-  console.log("Chosen Word: " + generatedWord);
-}
-// Event Listener
-document.getElementById("hintBtn").addEventListener("click",hintCategory);
-
-// Glen's Section End
 
 
 // play again + won/lost - some code is commented as i was not sure of 
@@ -91,7 +115,7 @@ if (tries == maxtries) {
     gameScore.innerHTML = "Game Over. You have run out of tries, please play again!";
     btnREPLAY.style.visibility = "visible";   
 }
-else if //(guessWord == generatedWord){ // we can also use if guessWord != blank
+else //(guessWord == generatedWord){ // we can also use if guessWord != blank
     gameScore.innerHTML = "Congratulations, you have won!"
     btnREPLAY.style.visibility = "visible";
-}
+
