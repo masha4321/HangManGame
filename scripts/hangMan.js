@@ -36,6 +36,43 @@ for (let i = 0; i < alphabet.length; i++) {
 //End of Alphabet
 }
 
+// Glen's Section Start
+let generatedWord; 
+
+function hintCategory(){
+
+  // generatedWord = theWord[Math.floor((Math.random() * theWord.length) )];
+  generatedWord = Math.floor((Math.random() * 9) )
+
+  switch( generatedWord ){
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+          displayHint("Insert Hint #1 Here");
+          break;
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+          displayHint("Insert Hint #2 Here");
+          break;
+  }
+  document.getElementById("hintBtn").disabled = true;
+}
+
+function displayHint(clue){
+  document.getElementById("hintText").innerHTML += clue; 
+  console.log("Chosen Word: " + generatedWord);
+}
+// Event Listener
+document.getElementById("hintBtn").addEventListener("click",hintCategory);
+
+// Glen's Section End
+
+
 // play again + won/lost - some code is commented as i was not sure of 
 // the elements names we will use
 let gameHm = document.getElementById("insertElemName");

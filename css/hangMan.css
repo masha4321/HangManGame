@@ -44,7 +44,7 @@
 }
 
 /*Word to Guess*/
-.emptyBox {
+.emptyBox, .hintBox {
   text-align: center;
 }
 
@@ -70,3 +70,13 @@ li {
   border-radius: 45px;
 }
 /*End of Alphabet*/
+
+/*Hint Button*/
+#hintBtn {
+  background-color: #2ee59d;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  border: none;
+  padding: 10px;
+}
+/*End of Hint Button*/

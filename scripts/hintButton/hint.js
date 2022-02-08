@@ -39,12 +39,12 @@
  * 
  * Associates hint depending on the word chosen for game - calls displayHint fctn
  */
-let selectedWord; 
+let generatedWord; 
 
 function hintCategory(){
-    selectedWord = theWord[Math.floor((Math.random() * theWord.length) )];
+    generatedWord = theWord[Math.floor((Math.random() * theWord.length) )];
 
-    switch( theWord.indexOf(selectedWord) ){
+    switch( theWord.indexOf(generatedWord) ){
         case 0:
         case 1:
         case 2:
@@ -76,7 +76,7 @@ function hintCategory(){
  */
 function displayHint(clue){
     document.getElementById("hintText").innerHTML = clue; 
-    console.log("Chosen Word: " + selectedWord);
+    console.log("Chosen Word: " + generatedWord);
 }
 
 
