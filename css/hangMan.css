@@ -33,6 +33,11 @@
 }
 /*End of Play Btn*/
 
+/*Word to Guess*/
+.emptyBox {
+  text-align: center;
+}
+
 /*Alphabet*/
 .lettersBox {
   text-align: center;
