@@ -105,13 +105,5 @@ btnREPLAY.style.visibility = "hidden";
 btnREPLAY.onclick = //gamefunction//;
 gameHm.appendChild(btnREPLAY);
 
-// won/lost - will have to include it in the game script
-let gameScore = document.getElementById("scoreElem")
-if (tries == maxtries) {
-    gameScore.innerHTML = "Game Over. You have run out of tries, please play again!";
-    btnREPLAY.style.visibility = "visible";   
-}
-else //(guessWord == generatedWord){ // we can also use if guessWord != blank
-    gameScore.innerHTML = "Congratulations, you have won!"
-    btnREPLAY.style.visibility = "visible";
+
 
