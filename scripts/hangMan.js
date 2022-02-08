@@ -43,7 +43,7 @@ function playGame() {
     li.appendChild(document.createTextNode(letter));
     ul.appendChild(li);
   }
-
+  
   randomWordGenerator();
   hintGenerator();
 
@@ -136,9 +136,9 @@ function checkLives(){
     let lettersDisplayed = document.getElementById("letters").querySelectorAll("li");
     for (let i = 0; i < alphabet.length; i++){
       lettersDisplayed[i].removeEventListener("click", checkLetter)
+    }
   }
-    
-  }
+
   if (nbOfLives != 0 && winCondition){
     document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
     btnREPLAY.style.visibility = "visible";
