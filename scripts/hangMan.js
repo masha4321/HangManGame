@@ -43,11 +43,9 @@ for (let i = 0; i < alphabet.length; i++) {
 randomWordGenerator();
 hintGenerator();
 document.getElementById("hintBtn").addEventListener("click",displayHint);
-
 }
 
 /*Glen's Section Start */
-
 function randomWordGenerator() {
   let wordDatabase = ["automation", "Strawberry", "Friendship", "Everything", "Appreciate", "Ubiquitous", "Motivation", "Vaccinated", "Obediently", "Earthbound"]
   randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -90,13 +88,11 @@ function hintGenerator() {
   }
   
 }
-/* Glen's Section End*/
-
 function displayHint(){
   document.getElementById("hintText").innerHTML += hint;
   document.getElementById("hintBtn").disabled = true;
 }
-
+/* Glen's Section End*/
 
 // play again + won/lost - some code is commented as i was not sure of 
 // the elements names we will use
