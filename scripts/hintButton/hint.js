@@ -14,7 +14,7 @@
 
 
 // ADD THIS LINE OF CODE TO REMOVE HIDDEN ATTRIBUTE
-    //  document.getElementById("container").removeAttribute("hidden");
+    // document.getElementById("container").removeAttribute("hidden");
 
  var theWord= [
     'dog',
@@ -67,6 +67,7 @@ function hintCategory(){
             displayHint("Categorie: TBD-3");
             break;
     }
+    document.getElementById("hintBtn").disabled = true;
 }
 
 /**
@@ -76,7 +77,6 @@ function hintCategory(){
 function displayHint(clue){
     document.getElementById("hintText").innerHTML = clue; 
     console.log("Chosen Word: " + selectedWord);
-    // document.getElementById("hintText").innerHTML = "Hint buttons is working!!!"; 
 }
 
 
