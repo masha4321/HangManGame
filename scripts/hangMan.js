@@ -2,6 +2,7 @@ let nbOfLives = 10;
 let randomNumber = 0;
 let wordChosen = "";
 let hint = "";
+let lettersUsed = [];
 
 //Play Btn
 $(document).ready(function () {
@@ -151,8 +152,9 @@ function checkLetter() {
     }
   }
 
-  if (!letterFound) {
+  if ( !letterFound && !lettersUsed.includes(chosenLetter) ) {
     nbOfLives--;
+    lettersUsed.push(chosenLetter);
   }
   gameScore.innerHTML = "You have " + nbOfLives + " lives left";
   checkLives();
