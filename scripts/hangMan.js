@@ -4,6 +4,7 @@ let emojiCount = 0
 let wordChosen = "";
 let hint = "";
 let lettersUsed = [];
+let alphabet = [];
 
 //Play Btn
 $(document).ready(function () {
@@ -31,7 +32,7 @@ function playGame() {
 
   //Blank Spaces
   let wordBox = document.getElementById("blanks")
-  wordBox.style.padding = "50px";
+  wordBox.style.margin = "35px 0px 50px 0px";
   for (let i = 0; i < 10; i++) {
     let li = document.createElement("li");
     li.style.backgroundColor = "grey";
@@ -40,7 +41,7 @@ function playGame() {
   }
 
   //Alphabet
-  let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   let ul = document.getElementById("letters");
 
   for (let i = 0; i < alphabet.length; i++) {
@@ -54,7 +55,7 @@ function playGame() {
   hintGenerator();
 
   //Adds an event listener on each letter of the alphabet
-  let lettersDisplayed = ul.querySelectorAll("li");
+  let lettersDisplayed = document.querySelectorAll("#letters li");
   for (let i = 0; i < alphabet.length; i++) {
     lettersDisplayed[i].addEventListener("click", checkLetter);
   }
@@ -88,7 +89,7 @@ function hintGenerator() {
       hint = "When you value something"
       break;
     case 6:
-      hint = "Everywhere"
+      hint = "All inclusive"
       break;
     case 7:
       hint = "The only way to get out of bed in the morning"
@@ -143,15 +144,19 @@ function checkLives() {
     document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
     btnREPLAY.style.visibility = "visible";
 
-    let lettersDisplayed = document.getElementById("letters").querySelectorAll("li");
+    
     for (let i = 0; i < alphabet.length; i++) {
-      lettersDisplayed[i].removeEventListener("click", checkLetter)
+      document.querySelectorAll("#letters li")[i].removeEventListener("click", checkLetter)
     }
   }
 
   if (nbOfLives != 0 && winCondition) {
     document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
     btnREPLAY.style.visibility = "visible";
+
+    for (let i = 0; i < alphabet.length; i++) {
+      document.querySelectorAll("#letters li")[i].removeEventListener("click", checkLetter)
+    }
   }
 }
 
@@ -162,7 +167,7 @@ function displayHint() {
 
 // reset game values(not complete, working on alphabet and the guess word as they repeat when "play again" is clicked)
 function reset(){
-  nbOfLives = 10;
+  nbOfLives = 9;
   randomNumber = 0;
   wordChosen = "";
   hint = "";
