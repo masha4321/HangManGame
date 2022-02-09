@@ -193,7 +193,7 @@ function displayHint() {
   document.getElementById("hintBtn").disabled = true;
 }
 
-// reset game values(not complete, working on lettersDisplayed and alphabet as they repeat when "play again" is clicked)
+// reset game values(not complete, working on alphabet and the guess word as they repeat when "play again" is clicked)
 function reset(){
   nbOfLives = 10;
   randomNumber = 0;
