@@ -17,7 +17,7 @@ $(document).ready(function () {
 function playGame() {
 
   // NB of lives - GOES IN SWETUP
-  let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " left";
+  let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
 
   //Figure to Display Box
   let displayBox = document.getElementById("imgBox");
@@ -138,6 +138,7 @@ function hintGenerator() {
 }
 
 function checkLetter() {
+  $(this).css("background","lightgrey");
   let chosenLetter = this.innerHTML;
   let wordHolder = document.getElementById("blanks").querySelectorAll("li");
   gameScore = document.getElementById("livesText");
@@ -153,7 +154,7 @@ function checkLetter() {
   if (!letterFound) {
     nbOfLives--;
   }
-  gameScore.innerHTML = "You have " + nbOfLives + " left";
+  gameScore.innerHTML = "You have " + nbOfLives + " lives left";
   checkLives();
 }
 
