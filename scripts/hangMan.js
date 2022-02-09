@@ -171,6 +171,11 @@ function reset(){
   randomNumber = 0;
   wordChosen = "";
   hint = "";
+  document.getElementById("letters").innerHTML = "";
+  document.getElementById("blanks").innerHTML = "";
+  document.getElementById("hintText").innerHTML = " Hint : ";
+  document.getElementById("hintBtn").disabled = false;
+
   
   playGame();
 }
