@@ -193,7 +193,7 @@ function displayHint() {
   document.getElementById("hintBtn").disabled = true;
 }
 
-// reset game values(not complete)
+// reset game values(not complete, working on lettersDisplayed and alphabet as they repeat when "play again" is clicked)
 function reset(){
   nbOfLives = 10;
   randomNumber = 0;
@@ -202,6 +202,11 @@ function reset(){
   
   playGame();
 }
+/* we can also use
+function reset(){
+  location.reload()
+if we need something workable rn
+*/
 
 // play again 
 let gameHm = document.getElementById("buttons");
