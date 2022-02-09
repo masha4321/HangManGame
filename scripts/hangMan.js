@@ -1,5 +1,6 @@
-let nbOfLives = 10;
+let nbOfLives = 9;
 let randomNumber = 0;
+let emojiCount = 0
 let wordChosen = "";
 let hint = "";
 let lettersUsed = [];
@@ -10,6 +11,7 @@ $(document).ready(function () {
     $(".center").fadeOut();
     $(".hintBox").removeAttr("hidden");
     $("#livesText").removeAttr("hidden");
+    $("#title").removeAttr("hidden");
     playGame();
   });
 });
@@ -26,43 +28,6 @@ function playGame() {
   //Figure to Display Box
   let displayBox = document.getElementById("imgBox");
   displayBox.style.display = "block";
-
-  //Stick Figure
-  var canvas = document.getElementById("myCanvas");
-  context = canvas.getContext("2d"); // get Canvas Context object
-
-  context.beginPath();
-  context.strokeStyle = "#000000";
-  context.lineWidth = 2;
-  context.arc(200, 50, 50, 0, Math.PI * 2, true); // draw circle for head
-  // (x,y) center, radius, start angle, end angle, anticlockwise
-  context.stroke();
-
-  // body
-  context.beginPath();
-  context.moveTo(200, 100);
-  context.lineTo(200, 180);
-  context.strokeStyle = "#000000";
-  context.stroke();
-
-  // arms
-  context.beginPath();
-  context.strokeStyle = "#000000";
-  context.moveTo(200, 100);
-  context.lineTo(150, 130);
-  context.moveTo(200, 100);
-  context.lineTo(250, 130);
-  context.stroke();
-
-  // legs
-  context.beginPath();
-  context.strokeStyle = "#000000";
-  context.moveTo(200, 180);
-  context.lineTo(150, 280);
-  context.moveTo(200, 180);
-  context.lineTo(250, 280);
-  context.stroke();
-  //End of Stick Figure
 
   //Blank Spaces
   let wordBox = document.getElementById("blanks")
@@ -158,6 +123,8 @@ function checkLetter() {
   if ( !letterFound && !lettersUsed.includes(chosenLetter) ) {
     nbOfLives--;
     lettersUsed.push(chosenLetter);
+    document.querySelectorAll("#imgBox img")[emojiCount].style.visibility="hidden";
+    emojiCount++
   }
   gameScore.innerHTML = "You have " + nbOfLives + " lives left";
   checkLives();
