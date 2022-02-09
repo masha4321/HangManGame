@@ -193,7 +193,7 @@ function displayHint() {
   document.getElementById("hintBtn").disabled = true;
 }
 
-// reset game values, only issue is to reset the blank words
+// reset game values(not complete)
 function reset(){
   nbOfLives = 10;
   randomNumber = 0;
