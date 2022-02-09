@@ -190,16 +190,22 @@ function displayHint() {
   document.getElementById("hintBtn").disabled = true;
 }
 
-// play again + won/lost - some code is commented as i was not sure of 
-// the elements names we will use
+// reset game values, only issue is to reset the blank words
+function reset(){
+  nbOfLives = 10;
+  randomNumber = 0;
+  wordChosen = "";
+  hint = "";
+  
+  playGame();
+}
+
+// play again 
 let gameHm = document.getElementById("buttons");
 
-//create button to play again ( gamefunction will reset game values)
 let btnREPLAY = document.createElement("button");
 btnREPLAY.id = "btnReplay";
 btnREPLAY.innerText = "Play Again";
 btnREPLAY.style.visibility = "hidden";
-btnREPLAY.onclick = //gamefunction//;
-  gameHm.appendChild(btnREPLAY);
-
-
+btnREPLAY.onclick = reset;
+gameHm.appendChild(btnREPLAY);
