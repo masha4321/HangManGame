@@ -11,18 +11,13 @@
 
 <body>
   <main id="container">
-
-    <header>
-      <h1 hidden id="title">Hangman - Can you Guess the Correct Word?</h1>
+    <header hidden>
+      <h1 id="title">
+        <img id="hangMan" src="images/hangMan.jpg" alt="hangMan"/> Hangman - Can you Guess the Correct Word?
+      </h1>
     </header>
 
     <section>
-      <!--Play Btn-->
-      <div class="center">
-        <button class="playBtn">Play</button>
-      </div>
-      <!--End of Play Btn-->
-
       <!-- Nb of Lives Display-->
       <h2 hidden id="livesText"></h2>
 
@@ -58,8 +53,13 @@
         <input type="button" value="Hint" name="button" id="hintBtn">
       </div>
       <!--End of Hint Button-->
-
     </section>
+
+    <!--Play Btn-->
+    <div class="center">
+      <button class="playBtn">Play</button>
+    </div>
+    <!--End of Play Btn-->
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="scripts/hangMan.js"></script>

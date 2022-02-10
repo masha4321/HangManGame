@@ -12,6 +12,7 @@ $(document).ready(function () {
     $(".center").fadeOut();
     $(".hintBox").removeAttr("hidden");
     $("#livesText").removeAttr("hidden");
+    $("header").removeAttr("hidden");
     playGame()
   });
 });
@@ -21,8 +22,6 @@ function playGame() {
   
   //hide replay button
   btnREPLAY.style.visibility = "hidden";
-
-  $("#title").removeAttr("hidden");
   
   // NB of lives - GOES IN SWETUP
   let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
@@ -36,7 +35,8 @@ function playGame() {
   wordBox.style.margin = "35px 0px 50px 0px";
   for (let i = 0; i < 10; i++) {
     let li = document.createElement("li");
-    li.style.backgroundColor = "grey";
+    li.style.backgroundColor = "#bbbbb8";
+    li.style.color="black";
     li.appendChild(document.createTextNode("_"));
     wordBox.append(li);
   }
@@ -109,7 +109,7 @@ function hintGenerator() {
 }
 
 function checkLetter() {
-  $(this).css("background","lightgrey");
+  $(this).css("background","#bbbbb8").css("color", "black");
   let chosenLetter = this.innerHTML;
   let wordHolder = document.getElementById("blanks").querySelectorAll("li");
   gameScore = document.getElementById("livesText");
