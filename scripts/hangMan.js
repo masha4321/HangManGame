@@ -21,7 +21,7 @@ $(document).ready(function () {
 function playGame() {
 
   //hide replay button
-  //btnREPLAY.style.display = "none";
+  btnREPLAY.style.display = "none";
   
   // NB of lives - GOES IN SWETUP
   let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
