@@ -19,9 +19,9 @@ $(document).ready(function () {
 
 
 function playGame() {
-  
+
   //hide replay button
-  btnREPLAY.style.visibility = "hidden";
+  btnREPLAY.style.display = "none";
   
   // NB of lives - GOES IN SWETUP
   let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
@@ -143,7 +143,9 @@ function checkLives() {
 
   if (nbOfLives <= 0) {
     document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
-    btnREPLAY.style.visibility = "visible";
+    document.getElementById("hintBtn").style.display="none"
+    btnREPLAY.style.display = "block";
+    btnREPLAY.style.margin = "50px auto";
 
     
     for (let i = 0; i < alphabet.length; i++) {
@@ -153,7 +155,9 @@ function checkLives() {
 
   if (nbOfLives != 0 && winCondition) {
     document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
-    btnREPLAY.style.visibility = "visible";
+    document.getElementById("hintBtn").style.display="none"
+    btnREPLAY.style.display = "block";
+    btnREPLAY.style.margin = "50px auto";
 
     for (let i = 0; i < alphabet.length; i++) {
       document.querySelectorAll("#letters li")[i].removeEventListener("click", checkLetter)
@@ -176,8 +180,13 @@ function reset(){
   document.getElementById("blanks").innerHTML = "";
   document.getElementById("hintText").innerHTML = " Hint : ";
   document.getElementById("hintBtn").disabled = false;
-
+  document.getElementById("hintBtn").style.display="block";
+  document.getElementById("hintBtn").style.margin="50px auto";
   
+  for (i=0; i<9; i++){
+    document.querySelectorAll("#imgBox img")[i].style.visibility="visible";
+  }
+
   playGame();
 }
 /* we can also use
@@ -192,6 +201,5 @@ let gameHm = document.getElementById("buttons");
 let btnREPLAY = document.createElement("button");
 btnREPLAY.id = "btnReplay";
 btnREPLAY.innerText = "Play Again";
-btnREPLAY.style.visibility = "hidden";
 btnREPLAY.onclick = reset;
 gameHm.appendChild(btnREPLAY);
