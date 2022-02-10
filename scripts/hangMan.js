@@ -123,6 +123,7 @@ function checkLetter() {
   }
 
   if ( !letterFound && !lettersUsed.includes(chosenLetter) ) {
+    console.log("Letter wrong!")
     nbOfLives--;
     lettersUsed.push(chosenLetter);
     document.querySelectorAll("#imgBox img")[emojiCount].style.visibility="hidden";
