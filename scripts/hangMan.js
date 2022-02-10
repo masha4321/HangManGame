@@ -201,7 +201,9 @@ function reset(){
 if we need something workable rn
 */
 
-// play again 
+// play again
+// ISSUE: unable to append created button element to div 
+// console gives error: Cannot read properties of null (reading 'appendChild')
   let gameHm = document.getElementById("playAgin");
 
   let btnREPLAY = document.createElement("button");
