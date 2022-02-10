@@ -84,13 +84,13 @@ function hintGenerator() {
       hint = "Relationship Status"
       break;
     case 4:
-      hint = "Ubiquitous"
+      hint = "God is -"
       break;
     case 5:
       hint = "When you value something"
       break;
     case 6:
-      hint = "All inclusive"
+      hint = "Everywhere"
       break;
     case 7:
       hint = "The only way to get out of bed in the morning"
