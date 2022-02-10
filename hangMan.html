@@ -1,58 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="css/hangMan.css" />
-    <title>Hang Man Game</title>
-  </head>
-  <body>
-    <!--Play Btn-->
-    <div class="center">
-      <button class="playBtn">Play</button>
-    </div>
-    <!--End of Play Btn-->
 
-    <h1 hidden id="title">Hangman - Can you Guess the Correct Word?</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Nb of Lives Display-->
-    <h2 hidden id="livesText"></h2>
+  <link rel="stylesheet" href="css/hangMan.css" />
+  <title>Hang Man Game</title>
+</head>
 
-    <!--Visual Display-->
-    <div id = "imgBox">
-        <img src="images/smiling-face-with-halo.png" alt="haloed-face"/>
-        <img src="images/smiling-face-with-sunglasses.png" alt="sunglass-face"/>
-        <img src="images/smiling-face.png" alt="smiling-face"/> <br>
-        <img src="images/flushed-face.png" alt="flushed-face"/>
-        <img src="images/neutral-face.png" alt="neutral-face"/>
-        <img src="images/astonished-face.png" alt="astonished-face"/> <br>
-        <img src="images/dizzy-face.png" alt="dizzy-face"/>
-        <img src="images/pouting-face.png" alt="pouting-face"/>
-        <img src="images/frowning-face.png" alt="frowning-face"/>
-    </div>
+<body>
+  <main id="container">
 
-    <!--Hint Text-->
-    <h2 hidden class="hintBox" id="hintText"> Hint : </h2>
+    <header>
+      <h1 hidden id="title">Hangman - Can you Guess the Correct Word?</h1>
+    </header>
 
-    <!--Word to Guess-->
-    <div class = "emptyBox">
+    <section>
+      <!--Play Btn-->
+      <div class="center">
+        <button class="playBtn">Play</button>
+      </div>
+      <!--End of Play Btn-->
+
+      <!-- Nb of Lives Display-->
+      <h2 hidden id="livesText"></h2>
+
+      <!--Visual Display-->
+      <div id="imgBox">
+        <img src="images/smiling-face-with-halo.png" alt="haloed-face" />
+        <img src="images/smiling-face-with-sunglasses.png" alt="sunglass-face" />
+        <img src="images/smiling-face.png" alt="smiling-face" /> <br>
+        <img src="images/flushed-face.png" alt="flushed-face" />
+        <img src="images/neutral-face.png" alt="neutral-face" />
+        <img src="images/astonished-face.png" alt="astonished-face" /> <br>
+        <img src="images/dizzy-face.png" alt="dizzy-face" />
+        <img src="images/pouting-face.png" alt="pouting-face" />
+        <img src="images/frowning-face.png" alt="frowning-face" />
+      </div>
+
+      <!--Hint Text-->
+      <h2 hidden class="hintBox" id="hintText"> Hint : </h2>
+
+      <!--Word to Guess-->
+      <div class="emptyBox">
         <ul id="blanks"></ul>
-    </div>
+      </div>
 
-    <!--Alphabet-->
-    <div class="lettersBox">
-      <ul id="letters"></ul>
-    </div>
-    <!--End of Alphabet-->
+      <!--Alphabet-->
+      <div class="lettersBox">
+        <ul id="letters"></ul>
+      </div>
+      <!--End of Alphabet-->
 
-    <!--Hint Button-->
-    <div hidden class="hintBox" id="buttons"> 
-      <input type="button" value="Hint" name="button" id="hintBtn">
-    </div>
-    <!--End of Hint Button-->
+      <!--Hint Button-->
+      <div hidden class="hintBox" id="buttons">
+        <input type="button" value="Hint" name="button" id="hintBtn">
+      </div>
+      <!--End of Hint Button-->
 
+    </section>
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="scripts/hangMan.js"></script>
+</body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="scripts/hangMan.js"></script>
-  </body>
 </html>

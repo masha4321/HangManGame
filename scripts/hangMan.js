@@ -12,16 +12,17 @@ $(document).ready(function () {
     $(".center").fadeOut();
     $(".hintBox").removeAttr("hidden");
     $("#livesText").removeAttr("hidden");
-    $("#title").removeAttr("hidden");
-    playGame();
+    playGame()
   });
 });
-//End of Play Btn
+
 
 function playGame() {
   
   //hide replay button
   btnREPLAY.style.visibility = "hidden";
+
+  $("#title").removeAttr("hidden");
   
   // NB of lives - GOES IN SWETUP
   let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
