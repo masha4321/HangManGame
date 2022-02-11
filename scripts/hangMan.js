@@ -144,7 +144,7 @@ function checkLives() {
 
   if (nbOfLives <= 0) {
     document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
-    document.getElementById("hintBtn").style.display="none"
+    document.getElementById("hintBtn").style.pointerEvents="none";
     btnREPLAY.style.display = "block";
     btnREPLAY.style.margin = "50px auto";
 
@@ -155,8 +155,8 @@ function checkLives() {
   }
 
   if (nbOfLives != 0 && winCondition) {
-    document.getElementById("livesText").innerHTML = "Congratulations, you have won!"
-    document.getElementById("hintBtn").style.display="none"
+    document.getElementById("livesText").innerHTML = "Congratulations, you have won!";
+    document.getElementById("hintBtn").style.pointerEvents="none";
     btnREPLAY.style.display = "block";
     btnREPLAY.style.margin = "50px auto";
 
@@ -167,8 +167,13 @@ function checkLives() {
 }
 
 function displayHint() {
-  document.getElementById("hintText").innerHTML += hint;
-  document.getElementById("hintBtn").disabled = true;
+  //document.getElementById("hintText").innerHTML += hint;
+  document.getElementById("hintBtn").remove();
+  let newElem = document.createElement("h2");
+  newElem.id = "hintText";
+  newElem.innerHTML = "Hint : " + hint;
+  document.getElementsByClassName("hintBox")[0].appendChild(newElem);
+  console.log(hint);
 }
 
 // reset game values(not complete, working on alphabet and the guess word as they repeat when "play again" is clicked)
@@ -179,8 +184,9 @@ function reset(){
   hint = "";
   document.getElementById("letters").innerHTML = "";
   document.getElementById("blanks").innerHTML = "";
-  document.getElementById("hintText").innerHTML = " Hint : ";
-  document.getElementById("hintBtn").disabled = false;
+  document.getElementById("btnReplay").remove();
+  let hintBtn = document.createElement("input").attr("id", "hintBtn").attr("type", "button").attr("value", "hint").attr("name", "button");
+  document.getElementsByClassName("hintBox")[0].appendChild(hintBtn);
   document.getElementById("hintBtn").style.display="block";
   document.getElementById("hintBtn").style.margin="50px auto";
   
@@ -196,11 +202,13 @@ function reset(){
 if we need something workable rn
 */
 
-// play again 
-let gameHm = document.getElementById("buttons");
+// play again
+// ISSUE: unable to append created button element to div 
+// console gives error: Cannot read properties of null (reading 'appendChild')
+  let gameHm = document.getElementById("playAgin");
 
-let btnREPLAY = document.createElement("button");
-btnREPLAY.id = "btnReplay";
-btnREPLAY.innerText = "Play Again";
-btnREPLAY.onclick = reset;
-gameHm.appendChild(btnREPLAY);
+  let btnREPLAY = document.createElement("button");
+  btnREPLAY.id = "btnReplay";
+  btnREPLAY.innerHTML = "Play Again";
+  btnREPLAY.onclick = reset;
+  gameHm.appendChild(btnREPLAY);
