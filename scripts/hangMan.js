@@ -1,3 +1,4 @@
+// Declare global variables to be used throughout game
 let wordDatabase = ["automation", "strawberry", "friendship", "everything", "appreciate", "ubiquitous", "motivation", "vaccinated", "obediently", "earthbound"]
 let wordCount=10;
 let nbOfLives = 9;
@@ -45,11 +46,11 @@ function playGame() {
   // NB of lives
   document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
 
-  //Figure to Display Box
+  //Emojis to Display Box
   let displayBox = document.getElementById("imgBox");
   displayBox.style.display = "block";
 
-  //Blank Spaces
+  //Blank Spaces for the generated word
   let wordBox = document.getElementById("blanks")
   wordBox.style.margin = "35px 0px 50px 0px";
   for (let i = 0; i < 10; i++) {
@@ -80,7 +81,7 @@ function playGame() {
     lettersDisplayed[i].addEventListener("click", checkLetter);
   }
 
-  //Adds event listen on hint button
+  //Adds event listener on hint button
   document.getElementById("hintBtn").addEventListener("click", displayHint);
 }
 
@@ -90,7 +91,6 @@ function randomWordGenerator() {
   wordChosen = wordDatabase[randomNumber - 1]
   wordDatabase.splice((randomNumber-1), 1)
   wordCount--;
-  console.log(wordChosen)
 }
 
 //Generates a hint associated with the word to guess
@@ -130,7 +130,9 @@ function hintGenerator() {
 
 }
 
-//Checks if the alphabet letter clicked matches any of the letter of the word generated. If not, the player looses a life. If yes, the letter appears in the correct position of the blank spaces representing the generated word. 
+//Checks if the clicked letter matches any of the letters of the generated word. 
+//If not, the player looses a life. 
+//If yes, the letter appears in the correct position of the blank spaces representing the generated word. 
 function checkLetter() {
   $(this).css("background", "#bbbbb8").css("color", "black");
   let chosenLetter = this.innerHTML;
