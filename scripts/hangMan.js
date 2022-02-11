@@ -1,3 +1,5 @@
+let wordDatabase = ["automation", "strawberry", "friendship", "everything", "appreciate", "ubiquitous", "motivation", "vaccinated", "obediently", "earthbound"]
+let wordCount=10;
 let nbOfLives = 9;
 let randomNumber = 0;
 let emojiCount = 0
@@ -84,9 +86,10 @@ function playGame() {
 
 //Generates a random word to guess
 function randomWordGenerator() {
-  let wordDatabase = ["automation", "strawberry", "friendship", "everything", "appreciate", "ubiquitous", "motivation", "vaccinated", "obediently", "earthbound"]
-  randomNumber = Math.floor(Math.random() * 10) + 1;
+  randomNumber = Math.floor(Math.random() * wordCount) + 1;
   wordChosen = wordDatabase[randomNumber - 1]
+  wordDatabase.splice((randomNumber-1), 1)
+  wordCount--;
   console.log(wordChosen)
 }
 
@@ -103,7 +106,7 @@ function hintGenerator() {
       hint = "Relationship Status"
       break;
     case 4:
-      hint = "God is -"
+      hint = "All inclusive"
       break;
     case 5:
       hint = "When you value something"
@@ -141,9 +144,7 @@ function checkLetter() {
       letterFound = true;
     }
   }
-
   if (!letterFound && !lettersUsed.includes(chosenLetter)) {
-    console.log("Letter wrong!")
     nbOfLives--;
     lettersUsed.push(chosenLetter);
     document.querySelectorAll("#imgBox img")[emojiCount].style.visibility = "hidden";
@@ -192,18 +193,26 @@ function displayHint() {
 
 // reset game values and generates a new game by calling the 'playGame' function
 function reset() {
-  nbOfLives = 9;
-  randomNumber = 0;
-  wordChosen = "";
-  hint = "";
-  document.getElementById("letters").innerHTML = "";
-  document.getElementById("blanks").innerHTML = "";
-  $("#playAgain").hide()
-  $("#hintBtn").show()
-  $("#hintText").hide()
-
-  for (i = 0; i < 9; i++) {
-    document.querySelectorAll("#imgBox img")[i].style.visibility = "visible";
+  if (wordCount==0) {
+    document.getElementById("livesText").innerHTML = "No more words left. Game is over. Thanks for playing!";
+  
+  } else {
+    nbOfLives = 9;
+    randomNumber = 0;
+    wordChosen = "";
+    hint = "";
+    emojiCount = 0
+    lettersUsed = [];
+    document.getElementById("letters").innerHTML = "";
+    document.getElementById("blanks").innerHTML = "";
+    $("#playAgain").hide()
+    $("#hintBtn").show()
+    $("#hintText").hide()
+  
+    for (i = 0; i < 9; i++) {
+      document.querySelectorAll("#imgBox img")[i].style.visibility = "visible";
+    }
+    playGame();
   }
-  playGame();
+
 }
