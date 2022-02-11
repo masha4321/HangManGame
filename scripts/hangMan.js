@@ -6,7 +6,7 @@ let hint = "";
 let lettersUsed = [];
 let alphabet = [];
 
-//Play Btn
+//Play and Instruction Btns
 $(document).ready(function () {
 
   //On play button click
@@ -19,32 +19,29 @@ $(document).ready(function () {
   });
 
   //On instruction button click
-  $(".instBtn").click(function(){
+  $(".instBtn").click(function () {
     $(".center").hide();
     instructions();
   })
 });
 
 //Instructions display
-function instructions(){
+function instructions() {
   $("#instructions").show()
   $("#backBtn").show()
 
-  $("#backBtn").click(function(){
+  $("#backBtn").click(function () {
     $("#instructions").hide()
     $("#backBtn").hide()
     $(".center").show()
   })
 }
 
-//Generates a new game: nb of lives, blank spaces and alphabet letters are displayed. A new word to guess is generated, with an associated hint 
+//Generates a new game
 function playGame() {
 
-  //hide replay button
-  btnREPLAY.style.display = "none";
-  
   // NB of lives
-  let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
+  document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
 
   //Figure to Display Box
   let displayBox = document.getElementById("imgBox");
@@ -56,7 +53,7 @@ function playGame() {
   for (let i = 0; i < 10; i++) {
     let li = document.createElement("li");
     li.style.backgroundColor = "#bbbbb8";
-    li.style.color="black";
+    li.style.color = "black";
     li.appendChild(document.createTextNode("_"));
     wordBox.append(li);
   }
@@ -132,7 +129,7 @@ function hintGenerator() {
 
 //Checks if the alphabet letter clicked matches any of the letter of the word generated. If not, the player looses a life. If yes, the letter appears in the correct position of the blank spaces representing the generated word. 
 function checkLetter() {
-  $(this).css("background","#bbbbb8").css("color", "black");
+  $(this).css("background", "#bbbbb8").css("color", "black");
   let chosenLetter = this.innerHTML;
   let wordHolder = document.getElementById("blanks").querySelectorAll("li");
   gameScore = document.getElementById("livesText");
@@ -145,11 +142,11 @@ function checkLetter() {
     }
   }
 
-  if ( !letterFound && !lettersUsed.includes(chosenLetter) ) {
+  if (!letterFound && !lettersUsed.includes(chosenLetter)) {
     console.log("Letter wrong!")
     nbOfLives--;
     lettersUsed.push(chosenLetter);
-    document.querySelectorAll("#imgBox img")[emojiCount].style.visibility="hidden";
+    document.querySelectorAll("#imgBox img")[emojiCount].style.visibility = "hidden";
     emojiCount++
   }
   gameScore.innerHTML = "You have " + nbOfLives + " lives left";
@@ -168,11 +165,9 @@ function checkLives() {
 
   if (nbOfLives <= 0) {
     document.getElementById("livesText").innerHTML = "Game Over. You have run out of lives, please play again!";
-    document.getElementById("hintBtn").style.pointerEvents="none";
-    btnREPLAY.style.display = "block";
-    btnREPLAY.style.margin = "50px auto";
+    document.getElementById("hintBtn").removeEventListener("click", displayHint);
+    $("#playAgain").show()
 
-    
     for (let i = 0; i < alphabet.length; i++) {
       document.querySelectorAll("#letters li")[i].removeEventListener("click", checkLetter)
     }
@@ -180,9 +175,8 @@ function checkLives() {
 
   if (nbOfLives != 0 && winCondition) {
     document.getElementById("livesText").innerHTML = "Congratulations, you have won!";
-    document.getElementById("hintBtn").style.pointerEvents="none";
-    btnREPLAY.style.display = "block";
-    btnREPLAY.style.margin = "50px auto";
+    document.getElementById("hintBtn").removeEventListener("click", displayHint);
+    $("#playAgain").show()
 
     for (let i = 0; i < alphabet.length; i++) {
       document.querySelectorAll("#letters li")[i].removeEventListener("click", checkLetter)
@@ -196,31 +190,20 @@ function displayHint() {
   $("#hintText").show().text("Hint: " + hint)
 }
 
-// reset game values(not complete, working on alphabet and the guess word as they repeat when "play again" is clicked)
-function reset(){
+// reset game values and generates a new game by calling the 'playGame' function
+function reset() {
   nbOfLives = 9;
   randomNumber = 0;
   wordChosen = "";
   hint = "";
   document.getElementById("letters").innerHTML = "";
   document.getElementById("blanks").innerHTML = "";
-  document.getElementById("btnReplay").remove();
-  let hintBtn = document.createElement("input").attr("id", "hintBtn").attr("type", "button").attr("value", "hint").attr("name", "button");
-  document.getElementsByClassName("hintBox")[0].appendChild(hintBtn);
-  document.getElementById("hintBtn").style.display="block";
-  document.getElementById("hintBtn").style.margin="50px auto";
-  
-  for (i=0; i<9; i++){
-    document.querySelectorAll("#imgBox img")[i].style.visibility="visible";
-  }
+  $("#playAgain").hide()
+  $("#hintBtn").show()
+  $("#hintText").hide()
 
+  for (i = 0; i < 9; i++) {
+    document.querySelectorAll("#imgBox img")[i].style.visibility = "visible";
+  }
   playGame();
 }
-
-  let gameHm = document.getElementById("playAgin");
-
-  let btnREPLAY = document.createElement("button");
-  btnREPLAY.id = "btnReplay";
-  btnREPLAY.innerHTML = "Play Again";
-  btnREPLAY.onclick = reset;
-  gameHm.appendChild(btnREPLAY);

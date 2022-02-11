@@ -91,6 +91,12 @@ h1{
   text-align: center;
 }
 
+#playAgain{
+  text-align: center;
+  display: none;
+  margin-top: 30px;
+}
+
 #hintText{
   margin: 50px;
 }

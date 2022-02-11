@@ -17,7 +17,12 @@
       </h1>
     </header>
     <section id="instructions">
-        <p>The instructions are simple: a random word is generated at the beginning of a new game, which the player has to guess by clicking the alphabet letters displayed on the screen. If the word to guess contains the letter clicked, the letter will appear at the correct position in the blank spaces representing the generated word. If the player makes an incorrect guess, he will loose a life. A player has a total of nine lives - nine wrong guesses and the game is over. If the player guesses the word before then, he must click each letter of the word to win the game! </p>
+      <p>The instructions are simple: a random word is generated at the beginning of a new game, which the player has to
+        guess by clicking the alphabet letters displayed on the screen. If the word to guess contains the letter
+        clicked, the letter will appear at the correct position in the blank spaces representing the generated word. If
+        the player makes an incorrect guess, he will loose a life. A player has a total of nine lives - nine wrong
+        guesses and the game is over. If the player guesses the word before then, he must click each letter of the word
+        to win the game! </p>
       <input type="button" value="Back to Menu" name="backBtn" id="backBtn">
     </section>
 
@@ -54,6 +59,12 @@
         <ul id="letters"></ul>
       </div>
       <!--End of Alphabet-->
+
+      <!--Play Again Btn-->
+      <div id="playAgain">
+        <button id="btnReplay" onclick="reset()">Play Again</button>
+      </div>
+      <!--End of Play Btn-->
     </section>
 
     <!--Play Btn-->
@@ -61,10 +72,6 @@
       <button class="playBtn">Play</button> <br>
       <button class="instBtn">Instructions</button>
     </div>
-    <!--End of Play Btn-->
-
-    <!--Play Again Btn-->
-    <div id="playAgain"></div>
     <!--End of Play Btn-->
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
