@@ -1,6 +1,4 @@
 // Declare global variables to be used throughout game
-let wordDatabase = ["automation", "strawberry", "friendship", "everything", "appreciate", "ubiquitous", "motivation", "vaccinated", "obediently", "earthbound"]
-let wordCount=10;
 let nbOfLives = 9;
 let randomNumber = 0;
 let emojiCount = 0
@@ -87,10 +85,9 @@ function playGame() {
 
 //Generates a random word to guess
 function randomWordGenerator() {
-  randomNumber = Math.floor(Math.random() * wordCount) + 1;
+  let wordDatabase = ["automation", "strawberry", "friendship", "everything", "appreciate", "ubiquitous", "motivation", "vaccinated", "obediently", "earthbound"]
+  randomNumber = Math.floor(Math.random() * 10) + 1;
   wordChosen = wordDatabase[randomNumber - 1]
-  wordDatabase.splice((randomNumber-1), 1)
-  wordCount--;
 }
 
 //Generates a hint associated with the word to guess
@@ -195,10 +192,6 @@ function displayHint() {
 
 // reset game values and generates a new game by calling the 'playGame' function
 function reset() {
-  if (wordCount==0) {
-    document.getElementById("livesText").innerHTML = "No more words left. Game is over. Thanks for playing!";
-  
-  } else {
     nbOfLives = 9;
     randomNumber = 0;
     wordChosen = "";
@@ -214,7 +207,5 @@ function reset() {
     for (i = 0; i < 9; i++) {
       document.querySelectorAll("#imgBox img")[i].style.visibility = "visible";
     }
-    playGame();
-  }
-
+    playGame()
 }
