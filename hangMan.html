@@ -13,9 +13,13 @@
   <main id="container">
     <header hidden>
       <h1 id="title">
-        <img id="hangMan" src="images/hangMan.jpg" alt="hangMan"/> Hangman - Can you Guess the Correct Word?
+        <img id="hangMan" src="images/hangMan.jpg" alt="hangMan" /> Hangman - Can you Guess the Correct Word?
       </h1>
     </header>
+    <section id="instructions">
+        <p>The instructions are simple: a random word is generated at the beginning of a new game, which the player has to guess by clicking the alphabet letters displayed on the screen. If the word to guess contains the letter clicked, the letter will appear at the correct position in the blank spaces representing the generated word. If the player makes an incorrect guess, he will loose a life. A player has a total of nine lives - nine wrong guesses and the game is over. If the player guesses the word before then, he must click each letter of the word to win the game! </p>
+      <input type="button" value="Back to Menu" name="backBtn" id="backBtn">
+    </section>
 
     <section>
       <!-- Nb of Lives Display-->
@@ -37,9 +41,8 @@
       <!--Hint Box-->
       <div hidden class="hintBox">
         <input type="button" value="Hint" name="button" id="hintBtn">
-        <!-- <h2 hidden id="hintText"> Hint : </h2> -->
+        <h2 hidden id="hintText"> Hint : </h2>
       </div>
-      
 
       <!--Word to Guess-->
       <div class="emptyBox">
@@ -55,7 +58,8 @@
 
     <!--Play Btn-->
     <div class="center">
-      <button class="playBtn">Play</button>
+      <button class="playBtn">Play</button> <br>
+      <button class="instBtn">Instructions</button>
     </div>
     <!--End of Play Btn-->
 

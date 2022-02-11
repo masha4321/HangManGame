@@ -8,22 +8,42 @@ let alphabet = [];
 
 //Play Btn
 $(document).ready(function () {
+
+  //On play button click
   $(".playBtn").click(function () {
-    $(".center").fadeOut();
+    $(".center").hide();
     $(".hintBox").removeAttr("hidden");
     $("#livesText").removeAttr("hidden");
     $("header").removeAttr("hidden");
-    playGame()
+    playGame();
   });
+
+  //On instruction button click
+  $(".instBtn").click(function(){
+    $(".center").hide();
+    instructions();
+  })
 });
 
+//Instructions display
+function instructions(){
+  $("#instructions").show()
+  $("#backBtn").show()
 
+  $("#backBtn").click(function(){
+    $("#instructions").hide()
+    $("#backBtn").hide()
+    $(".center").show()
+  })
+}
+
+//Generates a new game: nb of lives, blank spaces and alphabet letters are displayed. A new word to guess is generated, with an associated hint 
 function playGame() {
 
   //hide replay button
   btnREPLAY.style.display = "none";
   
-  // NB of lives - GOES IN SWETUP
+  // NB of lives
   let gameScore = document.getElementById("livesText").innerHTML = "You have " + nbOfLives + " lives left";
 
   //Figure to Display Box
@@ -65,6 +85,7 @@ function playGame() {
   document.getElementById("hintBtn").addEventListener("click", displayHint);
 }
 
+//Generates a random word to guess
 function randomWordGenerator() {
   let wordDatabase = ["automation", "strawberry", "friendship", "everything", "appreciate", "ubiquitous", "motivation", "vaccinated", "obediently", "earthbound"]
   randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -72,6 +93,7 @@ function randomWordGenerator() {
   console.log(wordChosen)
 }
 
+//Generates a hint associated with the word to guess
 function hintGenerator() {
   switch (randomNumber) {
     case 1:
@@ -108,6 +130,7 @@ function hintGenerator() {
 
 }
 
+//Checks if the alphabet letter clicked matches any of the letter of the word generated. If not, the player looses a life. If yes, the letter appears in the correct position of the blank spaces representing the generated word. 
 function checkLetter() {
   $(this).css("background","#bbbbb8").css("color", "black");
   let chosenLetter = this.innerHTML;
@@ -133,6 +156,7 @@ function checkLetter() {
   checkLives();
 }
 
+//Checks the number of lives left. If it is 0, the game is over. 
 function checkLives() {
   let winCondition = true;
 
@@ -166,14 +190,10 @@ function checkLives() {
   }
 }
 
+//Displays the hint
 function displayHint() {
-  //document.getElementById("hintText").innerHTML += hint;
-  document.getElementById("hintBtn").remove();
-  let newElem = document.createElement("h2");
-  newElem.id = "hintText";
-  newElem.innerHTML = "Hint : " + hint;
-  document.getElementsByClassName("hintBox")[0].appendChild(newElem);
-  console.log(hint);
+  $("#hintBtn").hide()
+  $("#hintText").show().text("Hint: " + hint)
 }
 
 // reset game values(not complete, working on alphabet and the guess word as they repeat when "play again" is clicked)
@@ -196,15 +216,7 @@ function reset(){
 
   playGame();
 }
-/* we can also use
-function reset(){
-  location.reload()
-if we need something workable rn
-*/
 
-// play again
-// ISSUE: unable to append created button element to div 
-// console gives error: Cannot read properties of null (reading 'appendChild')
   let gameHm = document.getElementById("playAgin");
 
   let btnREPLAY = document.createElement("button");
